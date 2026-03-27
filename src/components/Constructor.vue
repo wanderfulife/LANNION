@@ -43,7 +43,7 @@ onMounted(async () => {
   document.title = pageTitle.value;
 
   // Fetch per-commune street data
-  const communeFiles = ['lannion.json', 'ploulech.json', 'ploubezre.json'];
+  const communeFiles = ['lannion.json', 'ploulech.json', 'ploubezre.json', 'perros.json', 'pleumeur.json', 'trebeurden.json', 'tregastel.json'];
   const map = {};
   await Promise.all(communeFiles.map(async (file) => {
     try {

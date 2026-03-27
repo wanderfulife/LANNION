@@ -25,7 +25,11 @@ export const templateSurveyQuestions = [
             { id: 1, text: "Lannion", next: "Q2a_Lannion" },
             { id: 2, text: "Ploulec'h", next: "Q2a_Ploulech" },
             { id: 3, text: "Ploubezre", next: "Q2a_Ploubezre" },
-            { id: 4, text: "Autre commune", next: "Q2_Autre" }
+            { id: 4, text: "Perros-Guirec", next: "Q2a_Perros" },
+            { id: 5, text: "Pleumeur-Bodou", next: "Q2a_Pleumeur" },
+            { id: 6, text: "Trébeurden", next: "Q2a_Trebeurden" },
+            { id: 7, text: "Trégastel", next: "Q2a_Tregastel" },
+            { id: 8, text: "Autre commune", next: "Q2_Autre" }
         ]
     },
 
@@ -64,6 +68,42 @@ export const templateSurveyQuestions = [
         next: "Q3"
     },
 
+    // 🏘️ Q2a - Nom de rue - Perros-Guirec
+    {
+        id: "Q2a_Perros",
+        text: "De quelle rue venez-vous ?",
+        type: 'street',
+        streetFile: "perros.json",
+        next: "Q3"
+    },
+
+    // 🏘️ Q2a - Nom de rue - Pleumeur-Bodou
+    {
+        id: "Q2a_Pleumeur",
+        text: "De quelle rue venez-vous ?",
+        type: 'street',
+        streetFile: "pleumeur.json",
+        next: "Q3"
+    },
+
+    // 🏘️ Q2a - Nom de rue - Trébeurden
+    {
+        id: "Q2a_Trebeurden",
+        text: "De quelle rue venez-vous ?",
+        type: 'street',
+        streetFile: "trebeurden.json",
+        next: "Q3"
+    },
+
+    // 🏘️ Q2a - Nom de rue - Trégastel
+    {
+        id: "Q2a_Tregastel",
+        text: "De quelle rue venez-vous ?",
+        type: 'street',
+        streetFile: "tregastel.json",
+        next: "Q3"
+    },
+
     // 🚗 Q3 - Mode de transport utilisé pour se rendre à la gare
     {
         id: "Q3",
@@ -75,12 +115,13 @@ export const templateSurveyQuestions = [
             { id: 3, text: "En voiture - en tant que passager", next: "Q3b" },
             { id: 4, text: "En covoiturage avec un autre usager du train", next: "Q4" },
             { id: 5, text: "En bus/car", next: "Q3c" },
-            { id: 6, text: "À vélo", next: "Q3d" },
-            { id: 7, text: "En trottinette", next: "Q3d" },
-            { id: 8, text: "En Taxi/VTC", next: "Q4" },
-            { id: 9, text: "En 2 roues motorisé (Moto, scooter...)", next: "Q3a" },
-            { id: 10, text: "En train - je fais une correspondance", next: "Q4" },
-            { id: 11, text: "Autre", next: "Q3_Autre" }
+            { id: 6, text: "En transport à la demande", next: "Q3d" },
+            { id: 7, text: "À vélo", next: "Q3e" },
+            { id: 8, text: "En trottinette", next: "Q3e" },
+            { id: 9, text: "En Taxi/VTC", next: "Q4" },
+            { id: 10, text: "En 2 roues motorisé (Moto, scooter...)", next: "Q3a" },
+            { id: 11, text: "En train - je fais une correspondance", next: "Q4" },
+            { id: 12, text: "Autre", next: "Q3_Autre" }
         ]
     },
 
@@ -93,7 +134,7 @@ export const templateSurveyQuestions = [
         next: "Q4"
     },
 
-    // 🅿️ Q3a - Lieu de stationnement (si Q3 = 2 ou 9)
+    // 🅿️ Q3a - Lieu de stationnement (si Q3 = 2 ou 10)
     {
         id: "Q3a",
         text: "Où avez-vous stationné votre véhicule ?",
@@ -101,12 +142,12 @@ export const templateSurveyQuestions = [
         image: "plan.png",
         options: [
             { id: 1, text: "Dans le parking Min Ran (gare ouest)", next: "Q3a2" },
-            { id: 2, text: "Dans le parking Rol Tanguy (gare est)", next: "Q3a2" },
-            { id: 3, text: "Sur une place proche du bâtiment voyageurs (durée limitée)", next: "Q3a2" },
-            { id: 4, text: "Dans le parking Caerphilly", next: "Q3a2" },
+            { id: 2, text: "Dans le parking Rol Tanguy (gare est)", next: "Q3a3" },
+            { id: 3, text: "Sur une place proche du bâtiment voyageurs (durée limitée)", next: "Q3a3" },
+            { id: 4, text: "Dans le parking Caerphilly", next: "Q3a3" },
             { id: 5, text: "Sur une autre place en voirie ou parking", next: "Q3a_Autre" },
-            { id: 6, text: "Sur un stationnement privé (box ou place de parking privée)", next: "Q3a2" },
-            { id: 7, text: "Sur un arceau vélo (pour les 2 roues motorisés uniquement)", next: "Q3a2" }
+            { id: 6, text: "Sur un stationnement privé (box ou place de parking privée)", next: "Q3a3" },
+            { id: 7, text: "Sur un arceau vélo (pour les 2 roues motorisés uniquement)", next: "Q3a3" }
         ]
     },
 
@@ -116,12 +157,23 @@ export const templateSurveyQuestions = [
         text: "Préciser :",
         type: 'freeText',
         freeTextPlaceholder: "Préciser le lieu de stationnement...",
-        next: "Q3a2"
+        next: "Q3a3"
     },
 
-    // ⏱️ Q3a2 - Durée de stationnement
+    // 🅿️ Q3a2 - Place réservée Korrigo (si Q3a = 1)
     {
         id: "Q3a2",
+        text: "Avez-vous utilisé une place réservée Korrigo ?",
+        type: 'singleChoice',
+        options: [
+            { id: 1, text: "Oui", next: "Q3a3" },
+            { id: 2, text: "Non", next: "Q3a3" }
+        ]
+    },
+
+    // ⏱️ Q3a3 - Durée de stationnement
+    {
+        id: "Q3a3",
         text: "Combien de temps allez-vous laisser votre voiture stationnée ?",
         type: 'singleChoice',
         options: [
@@ -142,9 +194,10 @@ export const templateSurveyQuestions = [
         image: "plan.png",
         options: [
             { id: 1, text: "Sur le parvis (zone dépose)", next: "Q4" },
-            { id: 2, text: "Sur une place proche du bâtiment voyageurs", next: "Q4" },
-            { id: 3, text: "Sur une autre place en voirie ou parking", next: "Q3b_Autre" },
-            { id: 4, text: "Autre", next: "Q3b_Autre" }
+            { id: 2, text: "Sur la zone réservée aux taxis", next: "Q4" },
+            { id: 3, text: "Sur une place proche du bâtiment voyageurs", next: "Q4" },
+            { id: 4, text: "Sur une autre place en voirie ou parking", next: "Q3b_Autre" },
+            { id: 5, text: "Autre", next: "Q3b_Autre" }
         ]
     },
 
@@ -173,8 +226,7 @@ export const templateSurveyQuestions = [
             { id: 8, text: "Ligne Breizh GO 206 (Guingamp - Lannion)", next: "Q4" },
             { id: 9, text: "Ligne Breizh GO 227 (Paimpol - Lannion)", next: "Q4" },
             { id: 10, text: "Car scolaire", next: "Q4" },
-            { id: 11, text: "Transport à la demande", next: "Q4" },
-            { id: 12, text: "Autre", next: "Q3c_Autre" }
+            { id: 11, text: "Autre", next: "Q3c_Autre" }
         ]
     },
 
@@ -187,32 +239,44 @@ export const templateSurveyQuestions = [
         next: "Q4"
     },
 
-    // 🚲 Q3d - Lieu de stationnement vélo/trottinette (si Q3 = 6 ou 7)
+    // 🚐 Q3d - Service de transport à la demande (si Q3 = 6)
     {
         id: "Q3d",
-        text: "Où avez-vous stationné votre vélo/trottinette ?",
+        text: "Quel service de transport à la demande avez-vous utilisé ?",
         type: 'singleChoice',
         options: [
-            { id: 1, text: "Dans un box vélo sur le parvis de la gare", next: "Q3d1" },
-            { id: 2, text: "Sur un arceau sur le parvis de la gare", next: "Q3d1" },
-            { id: 3, text: "Dans un box dans le parking Caerphilly", next: "Q3d1" },
-            { id: 4, text: "Je le transporte avec moi dans le train", next: "Q3d1" },
-            { id: 5, text: "Autre", next: "Q3d_Autre" }
+            { id: 1, text: "Allo-TILT", next: "Q4" },
+            { id: 2, text: "Taxi TILT", next: "Q4" },
+            { id: 3, text: "Mobili TILT", next: "Q4" }
         ]
     },
 
-    // 📝 Q3d - Autre stationnement vélo
+    // 🚲 Q3e - Lieu de stationnement vélo/trottinette (si Q3 = 7 ou 8)
     {
-        id: "Q3d_Autre",
+        id: "Q3e",
+        text: "Où avez-vous stationné votre vélo/trottinette ?",
+        type: 'singleChoice',
+        options: [
+            { id: 1, text: "Dans un box vélo sur le parvis de la gare", next: "Q3e1" },
+            { id: 2, text: "Sur un arceau sur le parvis de la gare", next: "Q3e1" },
+            { id: 3, text: "Dans un box dans le parking Caerphilly", next: "Q3e1" },
+            { id: 4, text: "Je le transporte avec moi dans le train", next: "Q3e1" },
+            { id: 5, text: "Autre", next: "Q3e_Autre" }
+        ]
+    },
+
+    // 📝 Q3e - Autre stationnement vélo
+    {
+        id: "Q3e_Autre",
         text: "Préciser :",
         type: 'freeText',
         freeTextPlaceholder: "Préciser le lieu de stationnement...",
-        next: "Q3d1"
+        next: "Q3e1"
     },
 
-    // 🚲 Q3d1 - Type de vélo
+    // 🚲 Q3e1 - Type de vélo
     {
-        id: "Q3d1",
+        id: "Q3e1",
         text: "Quel type de vélo utilisez-vous ?",
         type: 'singleChoice',
         options: [
@@ -247,7 +311,8 @@ export const templateSurveyQuestions = [
             { id: 4, text: "Guingamp", next: "Q6" },
             { id: 5, text: "Saint-Brieuc", next: "Q6" },
             { id: 6, text: "Paris Montparnasse", next: "Q6" },
-            { id: 7, text: "Autre", next: "Q5_Autre" }
+            { id: 7, text: "Plouaret-Trégor", next: "Q6" },
+            { id: 8, text: "Autre", next: "Q5_Autre" }
         ]
     },
 
@@ -345,7 +410,11 @@ export const templateSurveyQuestions = [
             { id: 1, text: "Lannion", next: "Q2a_NON_VOYAGEUR_Lannion" },
             { id: 2, text: "Ploulec'h", next: "Q2a_NON_VOYAGEUR_Ploulech" },
             { id: 3, text: "Ploubezre", next: "Q2a_NON_VOYAGEUR_Ploubezre" },
-            { id: 4, text: "Autre commune", next: "Q2_NON_VOYAGEUR_Autre" }
+            { id: 4, text: "Perros-Guirec", next: "Q2a_NON_VOYAGEUR_Perros" },
+            { id: 5, text: "Pleumeur-Bodou", next: "Q2a_NON_VOYAGEUR_Pleumeur" },
+            { id: 6, text: "Trébeurden", next: "Q2a_NON_VOYAGEUR_Trebeurden" },
+            { id: 7, text: "Trégastel", next: "Q2a_NON_VOYAGEUR_Tregastel" },
+            { id: 8, text: "Autre commune", next: "Q2_NON_VOYAGEUR_Autre" }
         ]
     },
 
@@ -384,6 +453,42 @@ export const templateSurveyQuestions = [
         next: "Q3_NON_VOYAGEUR"
     },
 
+    // 🏘️ Q2a (Non-voyageurs) - Nom de rue - Perros-Guirec
+    {
+        id: "Q2a_NON_VOYAGEUR_Perros",
+        text: "De quelle rue venez-vous ?",
+        type: 'street',
+        streetFile: "perros.json",
+        next: "Q3_NON_VOYAGEUR"
+    },
+
+    // 🏘️ Q2a (Non-voyageurs) - Nom de rue - Pleumeur-Bodou
+    {
+        id: "Q2a_NON_VOYAGEUR_Pleumeur",
+        text: "De quelle rue venez-vous ?",
+        type: 'street',
+        streetFile: "pleumeur.json",
+        next: "Q3_NON_VOYAGEUR"
+    },
+
+    // 🏘️ Q2a (Non-voyageurs) - Nom de rue - Trébeurden
+    {
+        id: "Q2a_NON_VOYAGEUR_Trebeurden",
+        text: "De quelle rue venez-vous ?",
+        type: 'street',
+        streetFile: "trebeurden.json",
+        next: "Q3_NON_VOYAGEUR"
+    },
+
+    // 🏘️ Q2a (Non-voyageurs) - Nom de rue - Trégastel
+    {
+        id: "Q2a_NON_VOYAGEUR_Tregastel",
+        text: "De quelle rue venez-vous ?",
+        type: 'street',
+        streetFile: "tregastel.json",
+        next: "Q3_NON_VOYAGEUR"
+    },
+
     // 🚗 Q3 (Non-voyageurs) - Mode de transport
     {
         id: "Q3_NON_VOYAGEUR",
@@ -395,12 +500,13 @@ export const templateSurveyQuestions = [
             { id: 3, text: "En voiture - en tant que passager", next: "Q4_NON_VOYAGEUR" },
             { id: 4, text: "En covoiturage avec un autre usager du train", next: "Q4_NON_VOYAGEUR" },
             { id: 5, text: "En bus/car", next: "Q4_NON_VOYAGEUR" },
-            { id: 6, text: "À vélo", next: "Q4_NON_VOYAGEUR" },
-            { id: 7, text: "En trottinette", next: "Q4_NON_VOYAGEUR" },
-            { id: 8, text: "En Taxi/VTC", next: "Q4_NON_VOYAGEUR" },
-            { id: 9, text: "En 2 roues motorisé (Moto, scooter...)", next: "Q3a_NON_VOYAGEUR" },
-            { id: 10, text: "En train - je fais une correspondance", next: "Q4_NON_VOYAGEUR" },
-            { id: 11, text: "Autre", next: "Q3_NON_VOYAGEUR_Autre" }
+            { id: 6, text: "En transport à la demande", next: "Q4_NON_VOYAGEUR" },
+            { id: 7, text: "À vélo", next: "Q4_NON_VOYAGEUR" },
+            { id: 8, text: "En trottinette", next: "Q4_NON_VOYAGEUR" },
+            { id: 9, text: "En Taxi/VTC", next: "Q4_NON_VOYAGEUR" },
+            { id: 10, text: "En 2 roues motorisé (Moto, scooter...)", next: "Q3a_NON_VOYAGEUR" },
+            { id: 11, text: "En train - je fais une correspondance", next: "Q4_NON_VOYAGEUR" },
+            { id: 12, text: "Autre", next: "Q3_NON_VOYAGEUR_Autre" }
         ]
     },
 
